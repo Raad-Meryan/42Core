@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmeryan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 07:57:32 by rmeryan           #+#    #+#             */
-/*   Updated: 2024/09/19 07:57:34 by rmeryan          ###   ########.fr       */
+/*   Created: 2024/09/19 08:00:21 by rmeryan           #+#    #+#             */
+/*   Updated: 2024/09/19 08:00:22 by rmeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	unsigned char	*sone;
+	unsigned char	*stwo;
 
-	i = 0;
-	while (i < n)
+	sone = (unsigned char *)s1;
+	stwo = (unsigned char *)s2;
+	while (n--)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
-		i++;
+		if (*sone != *stwo)
+			return (*sone - *stwo);
+		sone++;
+		stwo++;
 	}
 	return (0);
 }
