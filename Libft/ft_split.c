@@ -12,87 +12,80 @@
 
 #include "libft.h"
 
-static int	ft_word_count(const char *s, char c)
+static	int	ft_wordcount(char const *s, char delimiter)
 {
-	int	count;
-	int	in_word;
+	int	i;
+	int	words;
 
-	count = 0;
-	in_word = 0;
-	while (*s)
-	{
-		if (*s != c && !in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (*s == c)
-			in_word = 0;
-		s++;
-	}
-	return (count);
-}
-
-static char	*ft_word_dup(const char *s, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	word = malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
 	i = 0;
-	while (start < end)
-		word[i++] = s[start++];
-	word[i] = '\0';
-	return (word);
+	words = 0;
+	while (s[i])
+	{
+		if (s[i] != delimiter && (s[i + 1] == delimiter || !s[i + 1]))
+			words++;
+		i++;
+	}
+	return (words);
 }
 
-static void	ft_free_all(char **result, int j)
+static	int	ft_strlen_till_delimiter(char const *s, char delimiter)
 {
 	int	i;
 
 	i = 0;
-	while (i < j)
+	while (s[i] && s[i] != delimiter)
+		i++;
+	return (i);
+}
+
+void	free_result(char **result, int wordcount)
+{
+	int	i;
+
+	i = 0;
+	while (i <= wordcount)
 	{
 		free(result[i]);
+		result[i] = NULL;
 		i++;
 	}
 	free(result);
+	result = NULL;
+}
+
+char	**set_strings(char **result, int wordcount, char const *s, char c)
+{
+	int		wordlen;
+	int		word;
+
+	word = 0;
+	while (word < wordcount)
+	{
+		while (*s == c)
+			s++;
+		wordlen = ft_strlen_till_delimiter(s, c);
+		result[word] = malloc(sizeof(char) * (wordlen + 1));
+		if (!result[word])
+		{
+			free_result(result, word);
+			return (NULL);
+		}
+		ft_strlcpy(result[word], s, wordlen + 1);
+		s += wordlen;
+		word++;
+	}
+	result[word] = NULL;
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	int		wordcount;
 	char	**result;
-	int		i;
-	int		j;
-	int		start;
-	int		words;
 
-	i = 0;
-	j = 0;
-	start = -1;
-	words = ft_word_count(s, c);
-	result = malloc((words + 1) * sizeof(char *));
+	wordcount = ft_wordcount(s, c);
+	result = malloc(sizeof(char *) * (wordcount + 1));
 	if (!result)
 		return (NULL);
-	while (s[i])
-	{
-		if (s[i] != c && start == -1)
-			start = i;
-		else if ((s[i] == c || s[i + 1] == '\0') && start != -1)
-		{
-			result[j] = ft_word_dup(s, start, (s[i] == c) ? i : i + 1);
-			if (!result[j])
-			{
-				ft_free_all(result, j);
-				return (NULL);
-			}
-			j++;
-			start = -1;
-		}
-		i++;
-	}
-	result[j] = NULL;
-	return (result);
+	return (set_strings(result, wordcount, s, c));
 }
