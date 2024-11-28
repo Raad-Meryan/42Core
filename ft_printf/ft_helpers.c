@@ -1,13 +1,13 @@
 #include "ft_printf.h"
 
-void ft_memset(void *s, int c, size_t n)
+void ft_memset(void *s, byte c, size_t n)
 {
 	byte	*ptr;
 
 	ptr = (byte *)s;
 	while (n)
 	{
-		*ptr++ = (byte)c;
+		*ptr++ = c;
 		--n;
 	}
 }

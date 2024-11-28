@@ -1,5 +1,18 @@
 #include "ft_printf.h"
 
+void	render_format(t_data *data)
+{
+	char	specifier;
+
+	specifier = data->flags.specifier;
+	if (specifier == '%')
+		print_char(data, '%');
+	else if (specifier == 'c')
+		print_char(data, va_arg(data->args_pointer, int));
+	else if (specifier == 's')
+		print_char(data, va_arg(data->args_pointer, int));
+
+}
 static int init_data(t_data *data, const char *format)
 {
 	data->s = format;
@@ -31,11 +44,11 @@ int ft_printf(const char *format, ...)
 		else
 		{
 			// write the character to the buffer
-			write_to_buff(&data, *data.s);
+			write_buff(&data, *data.s);
 		}
 		data.s++;
 	}
-	flush_bufff(&data);
+	flush_buff(&data);
 	va_end(data.args_pointer);
 	free(data.buffer);
 	return (data.chars_written);

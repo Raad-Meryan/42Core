@@ -26,9 +26,9 @@ static int get_value(t_data *data, int *value)
 	{
 		*value = va_arg(data->args_pointer, int);
 		++data->s;
-		return ;
+		return (0);
 	}
-	*value = ft_atoi(data->s);
+	*value = ft_atoi(data);
 }
 
 int parse_format(t_data *data)

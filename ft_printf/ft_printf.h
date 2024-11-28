@@ -78,10 +78,13 @@ typedef struct s_data
 	t_flags		flags; 
 }              t_data;
 
-int ft_printf(const char *format, ...);
-void ft_memset(void *s, int c, size_t n);
-int in(const char *s, char c);
-int	ft_atoi(t_data *data);
-int parse_format(t_data *data);
-
+int		ft_printf(const char *format, ...);
+void	ft_memset(void *s, byte c, size_t n);
+int		in(const char *s, char c);
+int		ft_atoi(t_data *data);
+int		parse_format(t_data *data);
+void	write_buff(t_data *data, char c);
+void	flush_buff(t_data *data);
+void	putchar_buff_n(char c, int precision, t_data *data);
+void	print_char(t_data *data, int c);
 #endif
