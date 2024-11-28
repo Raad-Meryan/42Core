@@ -38,6 +38,15 @@ typedef unsigned char   byte;
 #define NUMBERS "0123456789"
 #define SPECIFIERS "cspdiuxX"
 
+#define RST "\033[0m"
+#define O   "\033[1;33m"  // BOLD Yellow
+#define R   "\033[1;31m"  // BOLD Red
+#define G   "\033[1;32m"  // BOLD Green
+#define Y   "\033[1;33m"  // BOLD Yellow
+#define B   "\033[1;34m"  // BOLD Blue
+#define M   "\033[1;35m"  // BOLD Magenta
+
+
 typedef enum
 {
     BASE_2 = 2,
