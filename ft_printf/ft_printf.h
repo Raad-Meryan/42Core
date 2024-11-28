@@ -32,7 +32,7 @@ under all conversions.
 
 #define BUFFER_SIZE (1<<12) // 4096, the (1<<12) means 2^12, which is 4096
 
-typedef unsigned char	byte;
+typedef unsigned char   byte;
 
 #define FLAGS "-+ 0#"
 #define NUMBERS "0123456789"
@@ -40,51 +40,48 @@ typedef unsigned char	byte;
 
 typedef enum
 {
-	BASE_2 = 2,
-	BASE_8 = 8,
-	BASE_10 = 10,
-	BASE_16 = 16
+    BASE_2 = 2,
+    BASE_8 = 8,
+    BASE_10 = 10,
+    BASE_16 = 16
 }            e_base;
 
 typedef struct s_flags
 {
-	int		left_justified; // 0 = right justified, 1 = left justified, why do we need it? Because we need to know if we need to add spaces to the right or left of the number
-	int		minus;
-	int		zero_pad; // 0 = no zero padding, 1 = zero padding
-	int		space;
-	int		hash; 
-
-	char	specifier; // c, s, p, d, i, u, x, X, %, n
+    int     left_justified; // 0 = right justified, 1 = left justified, why do we need it? Because we need to know if we need to add spaces to the right or left of the number
+    int		minus;
+    int		zero_pad; // 0 = no zero padding, 1 = zero padding
+    int     space;
+    int     hash; 
     
-	int		width; // The width of the field
-	int		precision; // The precision of the field
+    char	specifier; // c, s, p, d, i, u, x, X, %, n
+    
+    int		width; // The width of the field
+    int		precision; // The precision of the field
 
-	int		uppercase;
-	e_base	base; // The base of the number
+    int		uppercase;
+    e_base	base; // The base of the number
 }				t_flags; // This struct will hold all the flags that we need to keep track of
 
 typedef struct s_data
 {
-	// pointer copy to format string
-	const char	*s; // I am doing this to pass this struct field with all the data to all the functions
-	// va_list -> va_arg(args_pointer, type)
-	va_list		args_pointer; // va_list to hold the arguments, and this to fetch the following variable
-	// chars written
-	int			chars_written; // This will hold the number of characters written
-	// Buffer, 4k bools
-	char		*buffer; // This will hold the buffer
-	int			buffer_index; // This will hold the index of the buffer
-	// All the bools that we need to keep track of [+-' '0#][width][.precision][specifier]
-	t_flags		flags; 
+    // pointer copy to format string
+    const  char	*s; // I am doing this to pass this struct field with all the data to all the functions
+    // va_list -> va_arg(args_pointer, type)
+    va_list		args_pointer; // va_list to hold the arguments, and this to fetch the following variable
+    // chars written
+    int			chars_written; // This will hold the number of characters written
+    // Buffer, 4k bools
+    char		*buffer; // This will hold the buffer
+    int			buffer_index; // This will hold the index of the buffer
+    // All the bools that we need to keep track of [+-' '0#][width][.precision][specifier]
+    t_flags     flags; 
 }              t_data;
 
-int		ft_printf(const char *format, ...);
-void	ft_memset(void *s, byte c, size_t n);
-int		in(const char *s, char c);
-int		ft_atoi(t_data *data);
-int		parse_format(t_data *data);
-void	write_buff(t_data *data, char c);
-void	flush_buff(t_data *data);
-void	putchar_buff_n(char c, int precision, t_data *data);
-void	print_char(t_data *data, int c);
+int ft_printf(const char *format, ...);
+void ft_memset(void *s, byte c, size_t n);
+int in(const char *s, char c);
+int	ft_atoi(t_data *data);
+int parse_format(t_data *data);
+
 #endif
