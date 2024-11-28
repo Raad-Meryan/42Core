@@ -36,7 +36,7 @@ typedef unsigned char   byte;
 
 #define FLAGS "-+ 0#"
 #define NUMBERS "0123456789"
-#define SPECIFIERS "cspdiuxX"
+#define SPECIFIERS "cspdiuxX%"
 
 #define RST "\033[0m"
 #define O   "\033[1;33m"  // BOLD Yellow
@@ -87,10 +87,13 @@ typedef struct s_data
     t_flags     flags; 
 }              t_data;
 
-int ft_printf(const char *format, ...);
-void ft_memset(void *s, byte c, size_t n);
-int in(const char *s, char c);
-int	ft_atoi(t_data *data);
-int parse_format(t_data *data);
-
+int		ft_printf(const char *format, ...);
+void	ft_memset(void *s, byte c, size_t n);
+int 	in(const char *s, char c);
+int		ft_atoi(t_data *data);
+int 	parse_format(t_data *data);
+void	print_char(t_data *data, int c);
+void	flush_buff(t_data *data);
+void	write_buff(t_data *data, char c);
+void	putchar_buff_n(char c, int precision, t_data *data);
 #endif

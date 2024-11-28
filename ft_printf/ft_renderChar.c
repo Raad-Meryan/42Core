@@ -18,5 +18,6 @@ void print_char(t_data *data, int c)
 			putchar_buff_n((char)c, 1, data);
 		}
 	}
-	putchar_buff_n((char)c, 1, data);
+	else
+		putchar_buff_n((char)c, 1, data);
 }
