@@ -87,6 +87,113 @@ void test_str()
 
 }
 
+void test_numbers()
+{
+    int num = -12345;
+    unsigned int unum = 4294967295; // Max value for 32-bit unsigned integer
+
+    // Signed integers (%d and %i)
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a signed number [%d]\n", num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a signed number [%d]\n", num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a signed number with width [%10d]\n", num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a signed number with width [%10d]\n", num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a signed number with precision [%.10d]\n", num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a signed number with precision [%.10d]\n", num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a signed number left-justified [%-10d]\n", num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a signed number left-justified [%-10d]\n", num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a signed number with width and precision [%10.5d]\n", num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a signed number with width and precision [%10.5d]\n", num));
+
+    // Unsigned integers (%u)
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is an unsigned number [%u]\n", unum));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is an unsigned number [%u]\n", unum));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is an unsigned number with width [%10u]\n", unum));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is an unsigned number with width [%10u]\n", unum));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is an unsigned number with precision [%.10u]\n", unum));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is an unsigned number with precision [%.10u]\n", unum));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is an unsigned number left-justified [%-10u]\n", unum));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is an unsigned number left-justified [%-10u]\n", unum));
+
+    // Hexadecimal (%x and %X)
+    unsigned int hex_num = 0x2A3F; // Example hexadecimal number
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a hex number (lowercase) [%x]\n", hex_num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a hex number (lowercase) [%x]\n", hex_num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a hex number (uppercase) [%X]\n", hex_num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a hex number (uppercase) [%X]\n", hex_num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a hex number with # flag [%#x]\n", hex_num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a hex number with # flag [%#x]\n", hex_num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a hex number with width [%10x]\n", hex_num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a hex number with width [%10x]\n", hex_num));
+
+    printf("/////////////////////////\n");
+
+    printf(Y"\tmine_CHARS=%d"RST"\n",
+        ft_printf("This is a hex number with precision [%.10x]\n", hex_num));
+    printf(Y"\treal_CHARS=%d"RST"\n",
+        printf("This is a hex number with precision [%.10x]\n", hex_num));
+}
+
 
 int main()
 {   
@@ -95,6 +202,8 @@ int main()
     test_precent();
     printf("\n/////\n");
     test_str();
+    printf("\n/////\n");
+    test_numbers();
     return (0);
 }
 
