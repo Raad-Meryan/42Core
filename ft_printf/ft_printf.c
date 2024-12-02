@@ -11,6 +11,16 @@ void	render_format(t_data *data)
 		print_char(data, va_arg(data->args_pointer, int));
 	else if (specifier == 's')
 		print_str(data, va_arg(data->args_pointer, char *));
+	else if (specifier == 'd' || specifier == 'i')
+		print_signed(data);
+	else if (specifier == 'u')
+		print_unsigned(data);
+	else if (specifier == 'x')
+		print_hex(data, 0);
+	else if (specifier == 'X')
+		print_hex(data, 1);
+	else if (specifier == 'p')
+		print_pointer(data);
 
 }
 static int init_data(t_data *data, const char *format)

@@ -106,4 +106,10 @@ void	print_char(t_data *data, int c);
 
 void	print_str(t_data *data, char *str);
 
+void	base_convert(unsigned long num, int base, int uppercase, char *buffer);
+void	print_num(t_data *data, unsigned long num, int is_signed);
+void	print_signed(t_data *data);
+void	print_unsigned(t_data *data);
+void	print_hex(t_data *data, int uppercase);
+void	print_pointer(t_data *data);
 #endif
