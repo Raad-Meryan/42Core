@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void ft_memset(void *s, byte c, size_t n)
+void	ft_memset(void *s, byte c, size_t n)
 {
 	byte	*ptr;
 
@@ -12,9 +12,9 @@ void ft_memset(void *s, byte c, size_t n)
 	}
 }
 
-int in(const char *s, char c)
+int	in(const char *s, char c)
 {
-	if(!s)
+	if (!s)
 		return (0);
 	while (*s)
 	{
@@ -37,7 +37,7 @@ int	ft_atoi(t_data *data)
 
 int	str_len(char *str)
 {
-	int	len;
+	int len;
 
 	len = 0;
 	while (*str++)

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static void padding(t_data *data, char *str)
+static void	padding(t_data *data, char *str)
 {
 	int	len;
 
@@ -15,12 +15,11 @@ static void padding(t_data *data, char *str)
 				data->flags.padding = data->flags.width - data->flags.precision;
 		}
 		else
-			data->flags.padding = data->flags.width - len;	
+			data->flags.padding = data->flags.width - len;
 	}
-		
 }
 
-static void put_str(t_data *data, char *str)
+static void	put_str(t_data *data, char *str)
 {
 	if (data->flags.precision >= 0)
 		putstr_buff_n(str, data->flags.precision, data);
@@ -30,7 +29,7 @@ static void put_str(t_data *data, char *str)
 
 void	print_str(t_data *data, char *str)
 {
-	if(str == NULL)
+	if (str == NULL)
 		str = "(null)";
 	padding(data, str);
 	if (data->flags.left_justified)

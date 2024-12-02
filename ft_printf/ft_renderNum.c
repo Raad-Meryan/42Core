@@ -69,7 +69,7 @@ void	base_convert(unsigned long num, int base, int uppercase, char *buffer)
 	reverse_string(i, buffer);
 }
 
-static void	handle_padding(t_data *data, int len, int content, char pad_char)
+void	handle_padding(t_data *data, int len, int content, char pad_char)
 {
 	int	padding;
 
@@ -78,7 +78,7 @@ static void	handle_padding(t_data *data, int len, int content, char pad_char)
 		putchar_buff_n(pad_char, padding, data);
 }
 
-unsigned long calc_abs_value(long num, int is_signed)
+unsigned long	calc_abs_value(long num, int is_signed)
 {
 	if (is_signed && num < 0)
 		return ((unsigned long)(-num));
@@ -86,7 +86,7 @@ unsigned long calc_abs_value(long num, int is_signed)
 		return ((unsigned long)num);
 }
 
-int handle_precision(t_data *data, int num_len)
+int	handle_precision(t_data *data, int num_len)
 {
 	int	zero_pad;
 
@@ -101,15 +101,15 @@ int handle_precision(t_data *data, int num_len)
 	return (zero_pad);
 }
 
-void handle_width_padding (t_data *data, int content_len)
+void	handle_width_padding(t_data *data, int content_len)
 {
 	if (!data->flags.left_justified && data->flags.width > content_len)
-		{
-			if (data->flags.zero_pad == 1)
-				handle_padding(data, data->flags.width, content_len, '0');
-			else
-				handle_padding(data, data->flags.width, content_len, ' ');
-		}
+	{
+		if (data->flags.zero_pad == 1)
+			handle_padding(data, data->flags.width, content_len, '0');
+		else
+			handle_padding(data, data->flags.width, content_len, ' ');
+	}
 }
 
 void	print_num(t_data *data, long num, int is_signed)

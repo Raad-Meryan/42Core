@@ -21,9 +21,9 @@ void	render_format(t_data *data)
 		print_hex(data, 1);
 	else if (specifier == 'p')
 		print_pointer(data);
-
 }
-static int init_data(t_data *data, const char *format)
+
+static int	init_data(t_data *data, const char *format)
 {
 	data->s = format;
 	data->chars_written = 0;
@@ -34,9 +34,10 @@ static int init_data(t_data *data, const char *format)
 	ft_memset(data->buffer, 0, BUFFER_SIZE * sizeof(char));
 	return (0);
 }
-int ft_printf(const char *format, ...)
+
+int	ft_printf(const char *format, ...)
 {
-	t_data  data;
+	t_data	data;
 
 	va_start(data.args_pointer, format);
 	if (init_data(&data, format))
