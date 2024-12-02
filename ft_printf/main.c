@@ -209,28 +209,28 @@ int main()
 }
 
 /*
-his is a signed number [-18446744073709539271]
-	mine_CHARS=48
+This is a signed number [-12345]
+	mine_CHARS=33
 This is a signed number [-12345]
 	real_CHARS=33
 /////////////////////////
-This is a signed number with width [-18446744073709539271]
-	mine_CHARS=59
+This is a signed number with width [    -12345]
+	mine_CHARS=48
 This is a signed number with width [    -12345]
 	real_CHARS=48
 /////////////////////////
-This is a signed number with precision [-18446744073709539271]
-	mine_CHARS=63
+This is a signed number with precision [-12345]
+	mine_CHARS=48
 This is a signed number with precision [-0000012345]
 	real_CHARS=53
 /////////////////////////
-This is a signed number left-justified [-18446744073709539271]
-	mine_CHARS=63
+This is a signed number left-justified [-12345    ]
+	mine_CHARS=52
 This is a signed number left-justified [-12345    ]
 	real_CHARS=52
 /////////////////////////
-This is a signed number with width and precision [-18446744073709539271]
-	mine_CHARS=73
+This is a signed number with width and precision [    -12345]
+	mine_CHARS=62
 This is a signed number with width and precision [    -12345]
 	real_CHARS=62
 /////////////////////////
@@ -278,6 +278,5 @@ This is a hex number with precision [2a3f]
 	mine_CHARS=43
 This is a hex number with precision [0000002a3f]
 	real_CHARS=49
-
 
 */

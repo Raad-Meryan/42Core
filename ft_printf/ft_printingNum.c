@@ -2,7 +2,7 @@
 
 void	print_signed(t_data *data)
 {
-	int	num;
+	long	num;
 
 	num = va_arg(data->args_pointer, int);
 	print_num(data, num, 1);

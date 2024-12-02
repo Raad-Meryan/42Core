@@ -13,7 +13,7 @@ static int	add_prefix(t_data *data, long num, char *buffer, int unsignedNum)
 		buffer[len++] = ' ';
 	if (data->flags.hash && num != 0)
 	{
-		if (data->flags.specifier == 'x')
+		if (data->flags.specifier == 'x' || data->flags.specifier == 'p')
 		{
 			buffer[len++] = '0';
 			buffer[len++] = 'x';
@@ -78,16 +78,21 @@ static void	handle_padding(t_data *data, int len, int content, char pad_char)
 		putchar_buff_n(pad_char, padding, data);
 }
 
-void	print_num(t_data *data, unsigned long num, int is_signed)
+void	print_num(t_data *data, long num, int is_signed)
 {
 	char	buffer[BUFFER_SIZE];
 	int		content_len;
 	int		prefix_len;
 	char	*x;
+	unsigned long	abs_num;
 
-	prefix_len = add_prefix(data, (long)num, buffer, !is_signed);
+	prefix_len = add_prefix(data, num, buffer, !is_signed);
 	x = prefix_len + buffer;
-	base_convert(num, data->flags.base, data->flags.uppercase, x);
+	if (is_signed && num < 0)
+		abs_num = (unsigned long)(-num);
+	else
+		abs_num = (unsigned long)num;
+	base_convert(abs_num, data->flags.base, data->flags.uppercase, x);
 	content_len = str_len(buffer);
 	if (!data->flags.left_justified)
 	{
