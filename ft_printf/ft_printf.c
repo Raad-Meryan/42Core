@@ -10,7 +10,7 @@ void	render_format(t_data *data)
 	else if (specifier == 'c')
 		print_char(data, va_arg(data->args_pointer, int));
 	else if (specifier == 's')
-		print_char(data, va_arg(data->args_pointer, int));
+		print_str(data, va_arg(data->args_pointer, char *));
 
 }
 static int init_data(t_data *data, const char *format)

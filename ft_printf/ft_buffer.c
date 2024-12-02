@@ -17,10 +17,18 @@ void	write_buff(t_data *data, char c)
 
 }
 
-void	putchar_buff_n(char c, int precision, t_data *data)
+void	putchar_buff_n(char str, int precision, t_data *data)
 {
 	if(precision <= 0)
 		return ;
 	while (precision--)
-		write_buff(data, c);
+		write_buff(data, str);
+}
+
+void	putstr_buff_n(char *str, int precision, t_data *data)
+{
+	if(precision <= 0)
+		return ;
+	while (precision-- && *str)
+		write_buff(data, *str++);
 }

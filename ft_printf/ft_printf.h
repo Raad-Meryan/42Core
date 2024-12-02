@@ -70,6 +70,7 @@ typedef struct s_flags
 
     int		uppercase;
     e_base	base; // The base of the number
+    int        padding; // The padding of the number
 }				t_flags; // This struct will hold all the flags that we need to keep track of
 
 typedef struct s_data
@@ -88,12 +89,21 @@ typedef struct s_data
 }              t_data;
 
 int		ft_printf(const char *format, ...);
+
 void	ft_memset(void *s, byte c, size_t n);
 int 	in(const char *s, char c);
 int		ft_atoi(t_data *data);
+int 	str_len(char *str);
+
 int 	parse_format(t_data *data);
-void	print_char(t_data *data, int c);
+
 void	flush_buff(t_data *data);
 void	write_buff(t_data *data, char c);
 void	putchar_buff_n(char c, int precision, t_data *data);
+void	putstr_buff_n(char *str, int precision, t_data *data);
+
+void	print_char(t_data *data, int c);
+
+void	print_str(t_data *data, char *str);
+
 #endif

@@ -37,12 +37,55 @@ void test_precent()
     
     // Test without color formatting first
     printf("\tmine_CHARS = %d\n",
-        ft_printf("This is a char [%-*%]\n", n));  // Use '%%' to print '%'
+        ft_printf("This is a percent sign: [%%]\n"));  // Use '%%' to print '%'
     
     printf("\treal_CHARS=%d\n\n",
-        printf("This is a char [%-*%%]\n", n));  // Same fix here
+        printf("This is a percent sign: [%%]\n"));  // Same fix here
+    
+    printf("/////////////////////////\n");
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a char with percent and dynamic width [%-*%]\n", n));  // Use '%%' to print '%'
+    
+    printf("\treal_CHARS=%d\n\n",
+         printf("This is a char with percent and dynamic width [%%]\n"));
 }
 
+void test_str()
+{
+    char *s = "Raad Samer Meryan";
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a str [%%s]: [%s]\n", s));
+
+    printf("\treal_CHARS = %d\n\n",
+        printf("This is a str [%%s]: [%s]\n", s));
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a str [%%10s]: [%10s]\n", s));
+
+    printf("\treal_CHARS = %d\n\n",
+        printf("This is a str [%%10s]: [%10s]\n", s));
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a str [%%10.3s]: [%10.3s]\n", s));
+
+    printf("\treal_CHARS = %d\n\n",
+        printf("This is a str [%%10.3s]: [%10.3s]\n", s));
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a str [%%-10.3s]: [%-10.3s]\n", s));
+
+    printf("\treal_CHARS = %d\n\n",
+        printf("This is a str [%%-10.3s]: [%-10.3s]\n", s));
+
+    printf("\tmine_CHARS = %d\n",
+        ft_printf("This is a str [%%*.*s]: [%*.*s]\n", 3, 6, s));
+
+    printf("\treal_CHARS = %d\n\n",
+        printf("This is a str [%%*.*s]: [%*.*s]\n", 3, 6, s));
+
+}
 
 
 int main()
@@ -50,6 +93,8 @@ int main()
     test_char();
     printf("\n/////\n");
     test_precent();
+    printf("\n/////\n");
+    test_str();
     return (0);
 }
 

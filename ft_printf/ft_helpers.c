@@ -33,3 +33,13 @@ int	ft_atoi(t_data *data)
 		value = value * 10 + (*data->s++ - '0');
 	return (value);
 }
+
+int	str_len(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
+}
