@@ -91,9 +91,9 @@ void	print_num(t_data *data, unsigned long num, int is_signed)
 	content_len = str_len(buffer);
 	if (!data->flags.left_justified)
 	{
-		if (data->flags.zero_pad == '0')
+		if (data->flags.zero_pad == 1)
 			handle_padding(data, data->flags.width, content_len, '0');
-		else if (data->flags.zero_pad == ' ')
+		else //if (data->flags.zero_pad == 0)
 			handle_padding(data, data->flags.width, content_len, ' ');
 	}
 	putstr_buff_n(buffer, content_len, data);

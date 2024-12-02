@@ -2,7 +2,7 @@
 
 void	print_signed(t_data *data)
 {
-	long	num;
+	int	num;
 
 	num = va_arg(data->args_pointer, int);
 	print_num(data, num, 1);
@@ -20,7 +20,7 @@ void	print_hex(t_data *data, int uppercase)
 {
 	unsigned long	num;
 
-	num = va_arg(data->args_pointer, int);
+	num = va_arg(data->args_pointer, unsigned int);
 	data->flags.uppercase = uppercase;
 	print_num(data, num, 0);
 }

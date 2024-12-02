@@ -22,6 +22,7 @@ int in(const char *s, char c)
 			return (1);
 		s++;
 	}
+	return (0);
 }
 
 int	ft_atoi(t_data *data)

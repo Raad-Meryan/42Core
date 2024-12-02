@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int padding(t_data *data, char *str)
+static void padding(t_data *data, char *str)
 {
 	int	len;
 

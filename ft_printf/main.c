@@ -91,6 +91,7 @@ void test_numbers()
 {
     int num = -12345;
     unsigned int unum = 4294967295; // Max value for 32-bit unsigned integer
+    unsigned int u = 8374;
 
     // Signed integers (%d and %i)
     printf(Y"\tmine_CHARS=%d"RST"\n",
@@ -130,30 +131,30 @@ void test_numbers()
     printf("/////////////////////////\n");
 
     printf(Y"\tmine_CHARS=%d"RST"\n",
-        ft_printf("This is an unsigned number [%u]\n", unum));
+        ft_printf("This is an unsigned number [%u]\n", u));
     printf(Y"\treal_CHARS=%d"RST"\n",
-        printf("This is an unsigned number [%u]\n", unum));
+        printf("This is an unsigned number [%u]\n", u));
 
     printf("/////////////////////////\n");
 
     printf(Y"\tmine_CHARS=%d"RST"\n",
-        ft_printf("This is an unsigned number with width [%10u]\n", unum));
+        ft_printf("This is an unsigned number with width [%10u]\n", u));
     printf(Y"\treal_CHARS=%d"RST"\n",
-        printf("This is an unsigned number with width [%10u]\n", unum));
+        printf("This is an unsigned number with width [%10u]\n", u));
 
     printf("/////////////////////////\n");
 
     printf(Y"\tmine_CHARS=%d"RST"\n",
-        ft_printf("This is an unsigned number with precision [%.10u]\n", unum));
+        ft_printf("This is an unsigned number with precision [%.10u]\n", u));
     printf(Y"\treal_CHARS=%d"RST"\n",
-        printf("This is an unsigned number with precision [%.10u]\n", unum));
+        printf("This is an unsigned number with precision [%.10u]\n", u));
 
     printf("/////////////////////////\n");
 
     printf(Y"\tmine_CHARS=%d"RST"\n",
-        ft_printf("This is an unsigned number left-justified [%-10u]\n", unum));
+        ft_printf("This is an unsigned number left-justified [%-10u]\n", u));
     printf(Y"\treal_CHARS=%d"RST"\n",
-        printf("This is an unsigned number left-justified [%-10u]\n", unum));
+        printf("This is an unsigned number left-justified [%-10u]\n", u));
 
     // Hexadecimal (%x and %X)
     unsigned int hex_num = 0x2A3F; // Example hexadecimal number
@@ -207,3 +208,76 @@ int main()
     return (0);
 }
 
+/*
+his is a signed number [-18446744073709539271]
+	mine_CHARS=48
+This is a signed number [-12345]
+	real_CHARS=33
+/////////////////////////
+This is a signed number with width [-18446744073709539271]
+	mine_CHARS=59
+This is a signed number with width [    -12345]
+	real_CHARS=48
+/////////////////////////
+This is a signed number with precision [-18446744073709539271]
+	mine_CHARS=63
+This is a signed number with precision [-0000012345]
+	real_CHARS=53
+/////////////////////////
+This is a signed number left-justified [-18446744073709539271]
+	mine_CHARS=63
+This is a signed number left-justified [-12345    ]
+	real_CHARS=52
+/////////////////////////
+This is a signed number with width and precision [-18446744073709539271]
+	mine_CHARS=73
+This is a signed number with width and precision [    -12345]
+	real_CHARS=62
+/////////////////////////
+This is an unsigned number [8374]
+	mine_CHARS=34
+This is an unsigned number [8374]
+	real_CHARS=34
+/////////////////////////
+This is an unsigned number with width [      8374]
+	mine_CHARS=51
+This is an unsigned number with width [      8374]
+	real_CHARS=51
+/////////////////////////
+This is an unsigned number with precision [8374]
+	mine_CHARS=49
+This is an unsigned number with precision [0000008374]
+	real_CHARS=55
+/////////////////////////
+This is an unsigned number left-justified [8374      ]
+	mine_CHARS=55
+This is an unsigned number left-justified [8374      ]
+	real_CHARS=55
+/////////////////////////
+This is a hex number (lowercase) [2a3f]
+	mine_CHARS=40
+This is a hex number (lowercase) [2a3f]
+	real_CHARS=40
+/////////////////////////
+This is a hex number (uppercase) [2A3F]
+	mine_CHARS=40
+This is a hex number (uppercase) [2A3F]
+	real_CHARS=40
+/////////////////////////
+This is a hex number with # flag [0x2a3f]
+	mine_CHARS=42
+This is a hex number with # flag [0x2a3f]
+	real_CHARS=42
+/////////////////////////
+This is a hex number with width [      2a3f]
+	mine_CHARS=45
+This is a hex number with width [      2a3f]
+	real_CHARS=45
+/////////////////////////
+This is a hex number with precision [2a3f]
+	mine_CHARS=43
+This is a hex number with precision [0000002a3f]
+	real_CHARS=49
+
+
+*/

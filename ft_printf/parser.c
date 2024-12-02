@@ -69,6 +69,7 @@ static	int	set_specifier(t_data *data)
 		if ('X' == data->flags.specifier)
 			data->flags.uppercase = 1;
 	}
+	return (0);
 }
 
 int	parse_format(t_data *data)
