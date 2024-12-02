@@ -18,7 +18,8 @@ I have to implement the following conversions:
 • %% Prints a percent sign.
 
 Bonus list:
-• Manage any combination of the following flags: ’-0.’ and the field minimum width
+• Manage any combination of the following flags: ’-0.’ and the 
+field minimum width
 under all conversions.
 • Manage all the following flags: ’# +’ (Yes, one of them is a space)
 */
@@ -57,7 +58,7 @@ typedef enum
 typedef struct s_flags
 {
 	int left_justified; // 0 = right justified, 1 = left justified,
-		why do we need it? Because we need to know if we need to add spaces to the right or left of the number
+		//why do we need it? Because we need to know if we need to add spaces to the right or left of the number
 	int					plus;
 	int zero_pad; // 0 = no zero padding, 1 = zero padding
 	int					space;
@@ -81,7 +82,7 @@ typedef struct s_data
 		// I am doing this to pass this struct field with all the data to all the functions
 	// va_list -> va_arg(args_pointer, type)
 	va_list args_pointer; // va_list to hold the arguments,
-		and this to fetch the following variable
+		//and this to fetch the following variable
 	// chars written
 	int chars_written; // This will hold the number of characters written
 	// Buffer, 4k bools
