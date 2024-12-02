@@ -58,7 +58,7 @@ typedef enum
 typedef struct s_flags
 {
     int     left_justified; // 0 = right justified, 1 = left justified, why do we need it? Because we need to know if we need to add spaces to the right or left of the number
-    int		minus;
+    int		plus;
     int		zero_pad; // 0 = no zero padding, 1 = zero padding
     int     space;
     int     hash; 

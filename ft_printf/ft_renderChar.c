@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void print_char(t_data *data, int c)
+void	print_char(t_data *data, int c)
 {
 	int	width;
 
@@ -10,11 +10,11 @@ void print_char(t_data *data, int c)
 		if (data->flags.left_justified)
 		{
 			putchar_buff_n((char)c, 1, data);
-			putchar_buff_n(' ', width - 1,data);
+			putchar_buff_n(' ', width - 1, data);
 		}
 		else
 		{
-			putchar_buff_n(' ', width - 1,data);
+			putchar_buff_n(' ', width - 1, data);
 			putchar_buff_n((char)c, 1, data);
 		}
 	}

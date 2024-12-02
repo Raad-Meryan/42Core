@@ -33,19 +33,14 @@ int ft_printf(const char *format, ...)
 		return (-1);
 	while (*data.s)
 	{
-		// check if we have a format specifier
 		if (*data.s == '%' && *(++data.s))
 		{
-			// parse the format specifier
 			if (parse_format(&data))
 				return (-1);
 			render_format(&data);
 		}
 		else
-		{
-			// write the character to the buffer
 			write_buff(&data, *data.s);
-		}
 		data.s++;
 	}
 	flush_buff(&data);
