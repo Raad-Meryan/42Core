@@ -69,70 +69,13 @@ void	base_convert(unsigned long num, int base, int uppercase, char *buffer)
 	reverse_string(i, buffer);
 }
 
-void	handle_padding(t_data *data, int len, int content, char pad_char)
-{
-	int	padding;
-
-	padding = len - content;
-	if (padding > 0)
-		putchar_buff_n(pad_char, padding, data);
-}
-
-unsigned long	calc_abs_value(long num, int is_signed)
-{
-	if (is_signed && num < 0)
-		return ((unsigned long)(-num));
-	else
-		return ((unsigned long)num);
-}
-
-int	handle_precision(t_data *data, int num_len)
-{
-	int	zero_pad;
-
-	zero_pad = 0;
-	if (data->flags.precision >= 0)
-	{
-		data->flags.zero_pad = 0;
-		zero_pad = data->flags.precision - num_len;
-		if (zero_pad < 0)
-			zero_pad = 0;
-	}
-	return (zero_pad);
-}
-
-void	handle_width_padding(t_data *data, int content_len)
-{
-	if (!data->flags.left_justified && data->flags.width > content_len)
-	{
-		if (data->flags.zero_pad == 1)
-			handle_padding(data, data->flags.width, content_len, '0');
-		else
-			handle_padding(data, data->flags.width, content_len, ' ');
-	}
-}
-
 void	print_num(t_data *data, long num, int is_signed)
 {
-	char			buffer[BUFFER_SIZE];
-	int				content_len;
-	int				prefix_len;
-	int				num_len;
-	int				zero_pad;
-	char			*x;
-	unsigned long	abs_num;
+	char	buffer[BUFFER_SIZE];
+	int		prefix_len;
 
 	prefix_len = add_prefix(data, num, buffer, !is_signed);
-	x = prefix_len + buffer;
-	abs_num = calc_abs_value(num, is_signed);
-	base_convert(abs_num, data->flags.base, data->flags.uppercase, x);
-	num_len = str_len(x);
-	zero_pad = handle_precision(data, num_len);
-	content_len = prefix_len + zero_pad + num_len;
-	handle_width_padding(data, content_len);
-	putstr_buff_n(buffer, prefix_len, data);
-	putchar_buff_n('0', zero_pad, data);
-	putstr_buff_n(x, num_len, data);
-	if (data->flags.left_justified)
-		handle_padding(data, data->flags.width, content_len, ' ');
+	base_convert(calc_abs_value(num, is_signed), data->flags.base,
+		data->flags.uppercase, buffer + prefix_len);
+	output_number(data, buffer, prefix_len);
 }

@@ -1,10 +1,10 @@
 #include "ft_printf.h"
 
-void	ft_memset(void *s, byte c, size_t n)
+void	ft_memset(void *s, t_byte c, size_t n)
 {
-	byte	*ptr;
+	t_byte	*ptr;
 
-	ptr = (byte *)s;
+	ptr = (t_byte *)s;
 	while (n)
 	{
 		*ptr++ = c;
@@ -37,7 +37,7 @@ int	ft_atoi(t_data *data)
 
 int	str_len(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str++)
