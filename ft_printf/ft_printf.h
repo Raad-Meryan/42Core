@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmeryan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/03 10:39:47 by rmeryan           #+#    #+#             */
+/*   Updated: 2024/12/03 10:39:48 by rmeryan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -87,5 +99,6 @@ void					print_signed(t_data *data);
 void					print_unsigned(t_data *data);
 void					print_hex(t_data *data, int uppercase);
 void					print_pointer(t_data *data);
-void					output_number(t_data *data, char *buffer, int prefix_len);
+void					output_number(t_data *data, char *buffer, 
+							int prefix_len);
 #endif
